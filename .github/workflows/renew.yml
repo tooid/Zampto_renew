@@ -18,9 +18,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository_owner }}/Zampto-Renew-Private
-          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
-          path: private
           token: ${{ secrets.MY_GIT_TOKEN }} 
+          path: private
           ssh-strict: true
           persist-credentials: true
 

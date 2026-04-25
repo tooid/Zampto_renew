@@ -20,6 +20,9 @@ jobs:
           repository: ${{ github.repository_owner }}/Zampto-Renew-Private
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private
+          token: ${{ secrets.MY_GIT_TOKEN }} 
+          ssh-strict: true
+          persist-credentials: true
 
       - name: 📂 移动脚本
         run: mv private/zampto_renew.py zampto_renew.py

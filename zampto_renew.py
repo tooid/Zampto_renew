@@ -7,8 +7,7 @@ from seleniumbase import SB
 LOGIN_URL = "https://auth.zampto.net/sign-in?app_id=bmhk6c8qdqxphlyscztgl"
 
 RENEW_URLS = [
-    "https://dash.zampto.net/server?id=5329",
-    "https://dash.zampto.net/server?id=5331"
+    "https://dash.zampto.net/server?id=5933"
 ]
 
 # ================= 环境变量 =================

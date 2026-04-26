@@ -54,9 +54,9 @@ jobs:
           wget -q "https://github.com/ginuerzh/gost/releases/download/v${VERSION}/gost_${VERSION}_linux_amd64.tar.gz"
           tar -xzf "gost_${VERSION}_linux_amd64.tar.gz"
           chmod +x gost
-          nohup ./gost -L http://:8080 -F "$GOST_PROXY" > gost.log 2>&1 &
+          nohup ./gost -L http://:10808 -F "$GOST_PROXY" > gost.log 2>&1 &
           sleep 3
-          IP=$(curl -s -x http://127.0.0.1:8080 https://api.ipify.org)
+          IP=$(curl -s -x http://127.0.0.1:10808 https://api.ipify.org)
           IP_MASKED=$(echo "$IP" | sed 's/\([0-9]*\.[0-9]*\.[0-9]*\.\)[0-9]*/\1xx/')
           echo "✅ GOST 已启动，出口IP：$IP_MASKED"
 

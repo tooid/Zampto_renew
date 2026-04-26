@@ -51,7 +51,7 @@ jobs:
             nohup ./xray_bin/xray run -c ./xray_bin/config.json > xray.log 2>&1 &
             sleep 4
             echo "🌐 测试通过代理获取的出口 IP:"
-            curl -s -x socks5h://127.0.0.1:0808 https://api.ipify.org || echo "⚠️ 代理测试超时或失败"
+            curl -s -x socks5h://127.0.0.1:8080 https://api.ipify.org || echo "⚠️ 代理测试超时或失败"
             echo -e "\n✅ Xray 代理服务已就绪"
           fi
 

@@ -11,10 +11,18 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: 📥 下载当前仓库代码
+      - name: 📥 下载私库中的脚本
         uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/Auto-renew-scripts
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          sparse-checkout: |
+            Zampto/
 
-      # --- 这里删除了原来报错的 “下载私库” 和 “移动脚本” 步骤 ---
+      - name: 📂 移动脚本到工作目录
+        run: |
+          mv Zampto/zampto_renew.py .
+          # 如果你的 py 脚本里还引用了 Zampto 目录下的其他文件，请确保路径正确
 
       - name: 🐍 设置 Python
         uses: actions/setup-python@v5
@@ -61,7 +69,7 @@ jobs:
             export USE_PROXY="false"
             echo "⚠️ 未使用代理模式"
           fi
-          # 确保文件名是 zampto_renew.py
+          # 执行当前目录下的脚本
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python zampto_renew.py
 
       - name: 📸 上传调试截图
